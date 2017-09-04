@@ -15,7 +15,7 @@ source:
   sha256: 62dac9c4fe5de22f59ba460d8a09ee27d9778aba1998e9c5ee625500e4502b33
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -25,6 +25,7 @@ requirements:
   build:
     - r-base
     - r-lattice
+    - gettext
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
@@ -32,6 +33,7 @@ requirements:
   run:
     - r-base
     - r-lattice
+    - gettext
 
 test:
   commands:
@@ -51,3 +53,4 @@ extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
