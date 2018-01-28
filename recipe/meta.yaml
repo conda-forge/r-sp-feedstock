@@ -1,4 +1,4 @@
-{% set version = '1.2-4' %}
+{% set version = '1.2-7' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/sp_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/sp/sp_{{ version }}.tar.gz
-  sha256: 62dac9c4fe5de22f59ba460d8a09ee27d9778aba1998e9c5ee625500e4502b33
+  sha256: 6d60e03e1abd30a7d4afe547d157ce3dd7a8c166fc5e407fd6d62ae99ff30460
 
 build:
   number: 0
@@ -32,6 +32,7 @@ requirements:
   run:
     - r-base
     - r-lattice
+    - libgcc  # [not win]
 
 test:
   commands:
