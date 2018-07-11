@@ -15,7 +15,7 @@ source:
   sha256: 6d60e03e1abd30a7d4afe547d157ce3dd7a8c166fc5e407fd6d62ae99ff30460
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -23,16 +23,16 @@ build:
 
 requirements:
   build:
+    - posix  # [win]
+    - {{ compiler('c') }}  # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+  host:
     - r-base
     - r-lattice
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
 
   run:
     - r-base
     - r-lattice
-    - libgcc  # [not win]
 
 test:
   commands:
@@ -52,3 +52,4 @@ extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - ocefpaf
