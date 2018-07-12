@@ -15,6 +15,7 @@ source:
   sha256: 6d60e03e1abd30a7d4afe547d157ce3dd7a8c166fc5e407fd6d62ae99ff30460
 
 build:
+  merge_build_host: True  # [win]
   number: 1
   skip: true  # [win32]
   rpaths:
