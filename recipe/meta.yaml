@@ -30,7 +30,6 @@ requirements:
   host:
     - r-base
     - r-lattice
-
   run:
     - r-base
     - r-lattice
