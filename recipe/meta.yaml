@@ -1,4 +1,4 @@
-{% set version = "1.4-0" %}
+{% set version = "1.4-1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,10 +11,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/sp_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/sp/sp_{{ version }}.tar.gz
-  sha256: 07da2a6d71bb9432b3807912c38a5b48bbffbc5e4c361cefbb0a9b1d37cdf255
+  sha256: 8f96f1a4827eea2cc02bb35c418ce2bdaf2d5ea47a214bcd4bc85f928b417039
 
 build:
-  merge_build_host: True  # [win]
+  merge_build_host: true  # [win]
   number: 0
   skip: true  # [win32]
   rpaths:
@@ -46,12 +46,10 @@ test:
 about:
   home: https://github.com/edzer/sp/ https://edzer.github.io/sp/
   license: GPL (>= 2)
-  summary: Classes and methods for spatial data; the classes document where the spatial location
-    information resides, for 2D or 3D data. Utility functions are provided, e.g. for
-    plotting data as maps, spatial selection, as well as methods for retrieving coordinates,
-    for subsetting, print, summary, etc.
+  summary: Classes and methods for spatial data; the classes document where the spatial location information resides, for 2D or 3D data. Utility functions are provided,
+    e.g. for plotting data as maps, spatial selection, as well as methods for retrieving coordinates, for subsetting, print, summary, etc.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
