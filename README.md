@@ -3,7 +3,7 @@ About r-sp
 
 Home: https://github.com/edzer/sp/ https://edzer.github.io/sp/
 
-Package license: GPL (>= 2)
+Package license: GPL-2.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-sp-feedstock/blob/master/LICENSE.txt)
 
