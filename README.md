@@ -3,6 +3,7 @@ About r-sp-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-sp-feedstock/blob/main/LICENSE.txt)
 
+
 About r-sp
 ----------
 
@@ -11,6 +12,7 @@ Home: https://github.com/edzer/sp/ https://edzer.github.io/sp/
 Package license: GPL-2.0-or-later
 
 Summary: Classes and methods for spatial data; the classes document where the spatial location information resides, for 2D or 3D data. Utility functions are provided, e.g. for plotting data as maps, spatial selection, as well as methods for retrieving coordinates, for subsetting, print, summary, etc.
+
 About r-sp
 ----------
 
