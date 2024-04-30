@@ -1,4 +1,4 @@
-{% set version = "2.1-3" %}
+{% set version = "2.1-4" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/sp_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/sp/sp_{{ version }}.tar.gz
-  sha256: fa939272e534811b34cfca7d1c619448b1e4f90240c092e25bb8764445c68454
+  sha256: e185e7fb61d2d7dbc50fd765a93e170fa778083a653588db1f5e99d019479f0a
 
 build:
   merge_build_host: true  # [win]
@@ -24,7 +24,9 @@ requirements:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
     - r-lattice                  # [build_platform != target_platform]
     - {{ compiler('c') }}        # [not win]
+    - {{ stdlib("c") }}          # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("c") }}                # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
