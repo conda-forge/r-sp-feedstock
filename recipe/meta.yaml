@@ -1,21 +1,25 @@
-{% set version = "2.2-1" %}
+{% set version = "2.2-3" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
   name: r-sp
-  version: {{ version|replace("-", "_") }}
+  version: "{{ version|replace('-', '_') }}"
 
 source:
   url:
     - {{ cran_mirror }}/src/contrib/sp_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/sp/sp_{{ version }}.tar.gz
-  sha256: 277a4533bc784a08fdbb710757b6af0c7a492691bfb07d8f0b2aa8ad7c857652
+  sha256: a238205229d60340df0911ad13b23d5f7e504c84f8b2917130d8f97c4c8523f5
 
 build:
   number: 0
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
@@ -23,13 +27,13 @@ requirements:
     - r-lattice                  # [build_platform != target_platform]
     - {{ compiler('c') }}        # [not win]
     - {{ stdlib("c") }}          # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ stdlib("c") }}                # [win]
-    - {{ posix }}filesystem        # [win]
+    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ stdlib("c") }}          # [win]
+    - {{ posix }}filesystem      # [win]
     - {{ posix }}make
-    - {{ posix }}sed               # [win]
-    - {{ posix }}coreutils         # [win]
-    - {{ posix }}zip               # [win]
+    - {{ posix }}sed             # [win]
+    - {{ posix }}coreutils       # [win]
+    - {{ posix }}zip             # [win]
   host:
     - r-base
     - r-lattice
@@ -43,11 +47,13 @@ test:
     - "\"%R%\" -e \"library('sp')\""  # [win]
 
 about:
-  home: https://github.com/edzer/sp/ https://edzer.github.io/sp/
+  home: https://edzer.github.io/sp/
+  dev_url: https://github.com/edzer/sp/
   license: GPL-2.0-or-later
   summary: Classes and methods for spatial data; the classes document where the spatial location information resides, for 2D or 3D data. Utility functions are provided, e.g. for plotting data as maps, spatial selection, as well as methods for retrieving coordinates, for subsetting, print, summary, etc.
   license_family: GPL3
   license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
